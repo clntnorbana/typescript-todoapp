@@ -63,7 +63,7 @@ const App = () => {
             </div>
             {todos.length > 0 && (
               <button className="btn-clear" onClick={clearFinishedTask}>
-                Delete finished tasks.
+                Delete finished tasks
               </button>
             )}
           </header>
