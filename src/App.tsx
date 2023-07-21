@@ -38,6 +38,11 @@ const App = () => {
     );
   };
 
+  const clearFinishedTask = () => {
+    const updatedTodos = todos.filter((todo) => todo.isDone !== true);
+    setTodos(updatedTodos);
+  };
+
   // count todo
   const todoCount = todos.filter((todo) => todo.isDone !== true).length;
 
@@ -46,13 +51,20 @@ const App = () => {
       <div className="app">
         <div className="todo">
           <header>
-            {todoCount > 0 ? (
-              <p>
-                You have {todoCount} {todoCount > 1 ? "activities" : "activity"}{" "}
-                to do
-              </p>
-            ) : (
-              <p>No todos? you can add some : {")"}</p>
+            <div>
+              {todoCount > 0 ? (
+                <p>
+                  You have {todoCount}{" "}
+                  {todoCount > 1 ? "activities" : "activity"} to do
+                </p>
+              ) : (
+                <p>No todos? you can add some : {")"}</p>
+              )}
+            </div>
+            {todos.length > 0 && (
+              <button className="btn-clear" onClick={clearFinishedTask}>
+                Clear finished task.
+              </button>
             )}
           </header>
           <TodoForm onAdd={addTodo} />
